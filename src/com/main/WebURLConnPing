@@ -1,0 +1,32 @@
+/**
+ * 
+ */
+package com.main;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+
+/**
+ * @author lugupta
+ *
+ */
+public class WebURLConnPing {
+
+		public static void main(String[] args) {
+		String url = "http://<enter website URL>/";
+
+		try {
+			final URLConnection connection = new URL(url).openConnection();
+			connection.connect();
+			System.out.println("Service " + url + " AVAILABLE!!!");
+		} catch (final MalformedURLException e) {
+			throw new IllegalStateException("Bad URL: " + url, e);
+		} catch (final IOException e) {
+			System.out.println("Service " + url + " NOT REACHABLE!!! " + e);
+		}
+
+	}
+
+}
